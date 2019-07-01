@@ -1,2 +1,8 @@
 .idea
 geckodriver.log
+venv/
+.idea/megasena-flip-kicker.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/misc.xml

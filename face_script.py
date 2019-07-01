@@ -8,7 +8,7 @@ WAIT_TO_LOAD = 3
 SCROLL_NUMBER = 30
 
 EMAIL = "__EMAIL__"
-PASSWORD = "__PASSWORD__"
+PASSWORD = "__PASS__"
 
 if __name__ == '__main__':
     # Start Driver
@@ -50,7 +50,7 @@ if __name__ == '__main__':
     for i in range(1, SCROLL_NUMBER):
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         time.sleep(WAIT_TO_LOAD)
-        print 'scroll', i, '/', SCROLL_NUMBER
+        print('scroll', i, '/', SCROLL_NUMBER)
 
     # Collect "Like" elements from posts
     likes = driver.find_elements_by_tag_name('a')
@@ -62,8 +62,6 @@ if __name__ == '__main__':
             if l.get_attribute('data-testid') == "UFI2ReactionLink":
                 main_likes.append(l)
         except selenium.common.exceptions.NoSuchElementException:
-            pass
-        except:
             pass
 
     # Like Action Process, with some fallbacks
@@ -84,15 +82,15 @@ if __name__ == '__main__':
                     driver.find_elements_by_class_name('layerCancel')[0].click()
                 except:
                     pass
-                print "ERR 2:", err2
+                print("ERR 2:", err2)
         except Exception as err:
             time.sleep(WAIT_TO_LOAD)
             try:
                 driver.find_elements_by_class_name('layerCancel')[0].click()
             except:
                 pass
-            print err
+            print(err)
 
-        print 'like', i, '/', len(main_likes)
+        print('like', i, '/', len(main_likes))
 
     driver.quit()
